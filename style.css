@@ -1,0 +1,134 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+    margin: 0;
+}
+
+#game {
+    position: relative;
+    width: 800px;
+    height: 300px;
+    border: 2px solid #000;
+    overflow: hidden;
+}
+
+#background {
+    position: absolute;
+    width: 100%; /* 調整寬度為與遊戲區域一致 */
+    height: 100%;
+    background-image: url('background.png');
+    background-size: cover; /* 調整為包含模式 */
+    background-repeat: no-repeat; /* 設置不重複 */
+    z-index: -1;
+}
+
+#dino {
+    position: absolute;
+    bottom: 0;
+    width: 60px;
+    height: 60px;
+    background-color: transparent;
+    background-image: url('dino.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#cactus {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 45px; /* 增大寬度 */
+    height: 60px; /* 增大高度 */
+    background-color: transparent;
+    background-image: url('cactus.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: moveCactus 2s infinite linear;
+}
+
+#item {
+    position: absolute;
+    right: 0;
+    bottom: 0; /* 初始時與地面平行 */
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    background-image: url('item.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: moveItem 5s linear; /* 新增動畫 */
+    display: none; /* 初始時不顯示道具 */
+}
+
+@keyframes moveCactus {
+    0% {
+        right: 0;
+    }
+    100% {
+        right: 100%;
+    }
+}
+
+@keyframes moveItem {
+    0% {
+        right: 0;
+    }
+    100% {
+        right: 100%;
+    }
+}
+
+.jump {
+    animation: jump 0.7s;
+}
+
+@keyframes jump {
+    0% {
+        bottom: 0;
+    }
+    50% {
+        bottom: 150px;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+
+.double-jump {
+    animation: doubleJump 0.7s;
+}
+
+@keyframes doubleJump {
+    0% {
+        bottom: 150px; /* 起始位置為第一次跳躍的最高點 */
+    }
+    50% {
+        bottom: 300px; /* 二段跳的高度 */
+    }
+    100% {
+        bottom: 0;
+    }
+}
+
+#score, #high-score {
+    position: absolute;
+    top: 10px;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    color: white;
+    text-shadow: 2px 2px 4px #000;
+}
+
+#score {
+    left: 10px;
+}
+
+#high-score {
+    right: 10px;
+}
